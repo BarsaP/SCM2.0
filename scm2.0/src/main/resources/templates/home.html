@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" data-th-href="@{'/CSS/output.css'}" />
+</head>
+<body>
+    <div class=" bg-gray-200 w-1/2 p-4 mx-auto">
+       <h1 class="text-2 font-bold" th:text="${name}">Welcome to home page</h1>
+        <p>Youtube Channel : <span th:text="${youtubeChannel}"></span></p>
+       <p>Github Repo Link : <span th:text="${githubRepo}"></span></p>
+
+       <a data-th-href="${githubRepo}">Click here to open</a> 
+       <p>In this video we are going to create complete spring boot project.
+          Join us to create projects using spring boot.
+          This is First part of the video.</p>
+          
+          <div>
+          <button class="px-3 py-3 rounded bg-blue-700 text-white">Click Here</button>
+        </div>
+    </div>
+</body>
+</html>

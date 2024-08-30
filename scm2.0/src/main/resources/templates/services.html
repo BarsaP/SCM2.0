@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head> 
+ <title>Services Page</title>
 </head>
-<body>
-<h1>This is services page</h1>
-<hr />
-  <!-- Using fragment -->
-  <div th:replace="~{base :: parent(~{::.third_content})}">
-    <section id="main_content">
-      <h1>This is Dynamic services passed to base parent</h1>
+    <body>
+      <section id="content">
+        <h1>Welcome to services page</h1>
+        
+        <h1>Services offered by SCM</h1>
+        <p>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis 
+        nostrud exerci tation ullamcorper.
+        </p>
       </section>
-      <section id="second_content">
-      <h1>This is second content</h1>
-      </section>
-      <section class="third_content">
-      <h1>This is third content</h1>
-      </section>
-      </div>
-      
-</body>
+      <script>
+        console.log("Service page");
+      </script>
+    </body>
 </html>

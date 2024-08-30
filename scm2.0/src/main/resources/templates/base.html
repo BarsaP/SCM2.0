@@ -1,8 +1,36 @@
-<div th:fragment="parent(content)">
-  <h1>This is parent fragment</h1>
-  <p>My name is Barsa priyadarshini Jena</p>
-  
-  <!-- <h1>Value of x is <span th:text="${x}"></span></h1>
-  <h1>Value of y is <span th:text="${y}"></span></h1> -->
-  <div th:replace="${content}"></div>
-</div>
+<!DOCTYPE html>
+<html 
+class="dark"
+th:fragment="parent(content, title, script)"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title data-th-replace="${title}">SCM</title>
+    <link rel="stylesheet" data-th-href="@{'/CSS/output.css'}" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    
+    <!-- font awesome -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" />
+    
+    </head>
+    <body>
+      <!-- common header -->
+        <div data-th-replace="navbar :: navbar"></div>
+      <!-- main content -->
+      <div class="p-4">
+      <section data-th-replace="${content}"></section>
+      </div>
+      
+      <!-- common footer -->
+      <footer class="p-4">
+        Footer: Copyrights@2024
+      </footer>
+      <!-- flow bite content -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <th:block data-th-replace="${script}"></th:block>
+    </body>
+</html>

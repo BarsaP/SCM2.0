@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html 
-class="dark"
+class="light"
 th:fragment="parent(content, title, script)"
 xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -17,9 +17,10 @@ xmlns:th="http://www.thymeleaf.org">
     referrerpolicy="no-referrer" />
     
     </head>
-    <body>
+    <body class="dark:bg-gray-900 dark:text-white">
       <!-- common header -->
         <div data-th-replace="navbar :: navbar"></div>
+        
       <!-- main content -->
       <div class="p-4">
       <section data-th-replace="${content}"></section>
@@ -31,6 +32,7 @@ xmlns:th="http://www.thymeleaf.org">
       </footer>
       <!-- flow bite content -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script data-th-src="@{'/js/script.js'}"></script>
     <th:block data-th-replace="${script}"></th:block>
     </body>
 </html>

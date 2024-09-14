@@ -1,16 +1,26 @@
 package com.scm.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+
 //import org.apache.catalina.authenticator.jaspic.PersistentProviderRegistrations.Providers;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.scm.entities.Providers;
 
 @Entity(name = "user")
 @Table(name = "users")
@@ -38,8 +48,13 @@ public class User {
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
     
+    @Enumerated(value= EnumType.STRING)
     //SELF, GOOGLE, FACEBOOK, TWITTER, LINKEDIN, GITHUB
     private Providers provider = Providers.SELF;
     private String providerUserId;
+    
+    //add more field if needed
+    @OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch= FetchType.LAZY,orphanRemoval = true)
+    private List<Contact>contacts = new ArrayList<>();
     
 }

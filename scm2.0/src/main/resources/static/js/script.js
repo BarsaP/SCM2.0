@@ -15,10 +15,8 @@ function changeTheme(){
 	//changeThemeButton.querySelector("span").textContent = 
 	//	currentTheme == "light" ? "Dark" : "Light";
 	changeThemeButton.addEventListener('click', (event) => {
-		
-		console.log("change theme button clicked");
-		
 		let oldTheme = currentTheme;
+		console.log("change theme button clicked");
 		
 		if(currentTheme == "dark"){
 			//theme light

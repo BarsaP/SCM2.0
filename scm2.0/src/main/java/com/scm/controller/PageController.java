@@ -10,9 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.scm.entities.User;
 import com.scm.forms.UserForm;
+import com.scm.helpers.Message;
+import com.scm.helpers.MessageType;
 import com.scm.services.UserService;
 
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
+
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 
 @Controller
@@ -67,13 +73,17 @@ public class PageController {
 	 //processing register
 	 
 	 @RequestMapping(value="/do-register", method=RequestMethod.POST)
-     public String processRegister(@ModelAttribute UserForm userForm) {
+     public String processRegister(@Valid @ModelAttribute UserForm userForm, BindingResult rBindingResult, HttpSession session) {
 		 System.out.println("Processing registration");
 		 //fetch form data
 		 //User form
 		 System.out.println(userForm);
 		 
 		 //validate form data
+		 if(rBindingResult.hasErrors()) {
+			 return "register";
+		 }
+		 
 		 //TODO::validate userForm
 		 
 		 //save to database
@@ -103,8 +113,14 @@ public class PageController {
 		 
 		 //message("Registration successful")
 		 
+		 // add the message
+		 
+		 Message message = Message.builder().content("Registration Successful").type(MessageType.green).build();
+		 
+		 session.setAttribute("message", message);
+		 
 		 //redirect to login page
-    	 return "redirect:/login";
+    	 return "redirect:/register";
      }
 	 
 	 //contact
